@@ -1,5 +1,7 @@
 package com.isl.webapp.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,4 +22,10 @@ public class Local {
     private String zona;  // Ej: "Norte", "Centro", etc.
 
     private String codigoInterno;  // Otro identificador del local
+    
+    @Column
+    private String direccion;
+
+    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL)
+    private List<FrecuenciaLocal> frecuencia;
 }
